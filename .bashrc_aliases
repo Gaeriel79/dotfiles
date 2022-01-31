@@ -1,0 +1,29 @@
+#ls
+alias ls="ls -lah --color=auto"
+
+#git add dotfile to repo
+alias dotconfig="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+
+#confirmations
+alias mc="mv -i"
+alias mc="cp -i"
+alias mc="rm -i"
+alias mc="ln -i"
+
+#sudo
+alias reboot="sudo reboot"
+alias shutdown="sudo shutdown -h now"
+alias systemctl="sudo systemctl"
+
+alias mkdir="mkdir -pv"
+
+#Edit config files
+alias vxm="vim ~/.xmonad/xmonad.hs"
+
+
+#reflector
+alias refb="sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak" 
+alias refr="sudo cp /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist" 
+alias ref20="sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist" 
+
+#sortieren
