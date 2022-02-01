@@ -53,6 +53,7 @@ setxkbmap -layout de
 # set Cursor
 xsetroot-cursor_name left_ptr
 
+picom &
 nitrogen --restore &
 xrandr -s 1920x1080
 exec xmonad

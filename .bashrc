@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+#PATH
+export PATH="/home/gaeriel/scripts:$PATH"
+
 #include .bashrc_aliases if it exists
 if [ -f $HOME/.bashrc_aliases ]; then
 	. $HOME/.bashrc_aliases

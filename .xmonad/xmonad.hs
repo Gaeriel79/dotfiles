@@ -11,7 +11,9 @@ import XMonad.Util.SpawnOnce
 
 main = xmonad $ defaultConfig
          { modMask = mod4Mask
-         , terminal = "kitty"
+         , terminal = "kitty ~"
          }
 
-
+myStartupHook = do
+           spawnOnce "nitrogen --restore &"
+           spawnOnce "picom &"
