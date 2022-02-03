@@ -53,7 +53,8 @@ setxkbmap -layout de
 # set Cursor
 xsetroot-cursor_name left_ptr
 
-picom &
 nitrogen --restore &
+picom &
 xrandr -s 1920x1080
+#trayer -edge top -align right -SetDockType true -SetPartialStrut true -width 200 &
 exec xmonad

@@ -5,13 +5,13 @@ import XMonad
 import System.Directory
 import System.IO (hPutStrLn)
 import System.Exit (exitSuccess)
+import XMonad.Hooks.ManageDocks
 
 --Utilities
 import XMonad.Util.Dmenu
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig
-import XMonad.Util.Dmenu
 
 --Data
 import Data.Char (isSpace, toUpper)
@@ -28,7 +28,7 @@ myTerminal :: String
 myTerminal = "kitty"
 
 myEditor :: String
-myEditor = "vim"
+myEditor = "gvim"
 
 myBorderWidth :: Dimension
 myBorderWidth = 5             --Sets Bordercolor for Windows
@@ -45,11 +45,22 @@ myStartupHook :: X ()
 myStartupHook = do
            spawnOnce "nitrogen --restore &"
            spawnOnce "picom &"
+           --spawnOnce "killall xmobar"
+
+--Layout
+myLayoutHook = avoidStruts (tiled ||| Mirror tiled ||| Full)
+             where
+             tiled = Tall nmaster delta ratio
+             nmaster = 1
+             ratio = 2/3
+             delta = 5/100
+
 
 --Keybindings
 myKeys =
     --Start Software
              [ ((mod4Mask, xK_f),spawn "firefox") --opens firefox
+             , ((mod4Mask, xK_d),spawn "dmenu_run") --opens dmenu
 
     --System Commands
              , ((mod4Mask .|. shiftMask, xK_F4), spawn "sudo shutdown -h now") --window key + Shift + F4 = shutdown
@@ -62,8 +73,8 @@ myKeys =
 
 main :: IO ()
 main = do
-      --xmproc <- spawnPipe ("kitty")
-      xmonad $ defaultConfig
+      xmproc <- spawnPipe ("xmobar -x 0 /home/gaeriel/.config/xmobar/xmobarrc")
+      xmonad $ docks defaultConfig
          { modMask             = mod4Mask
          ,terminal             = myTerminal
          ,startupHook          = myStartupHook

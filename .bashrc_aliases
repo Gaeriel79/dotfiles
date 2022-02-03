@@ -19,7 +19,7 @@ alias mkdir="mkdir -pv"
 
 #Edit config files
 alias vxm="vim ~/.xmonad/xmonad.hs"
-
+alias vxmb="vim ~/.config/xmobar/xmobarrc"
 
 #reflector
 alias refb="sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak" 
